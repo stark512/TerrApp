@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -14,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TerrApp.User_Controls;
 
-namespace TerrApp
+namespace TerrApp.Views
 {
     public partial class MainWindow : Window
     {
@@ -41,6 +42,21 @@ namespace TerrApp
         {
             SpidersTab spiderTab = new();
             grdMain.Children.Add(spiderTab);
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (ToggleButton tglButton in SideMenu.Children)
+            {
+                if (tglButton != (ToggleButton)sender)
+                {
+                    tglButton.IsChecked = false;
+                }
+                else
+                {
+                    tglButton.IsChecked = true;
+                }
+            }
         }
     }
 }
