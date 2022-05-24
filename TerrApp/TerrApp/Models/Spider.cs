@@ -26,10 +26,13 @@ namespace TerrApp.Models
         public List<Size> SizeList { get; set; }
         public List<Terrarium> TerrariumList { get; set; }
         public List<Escape> EscapeList { get; set; }
+        public List<Reproduction> ReproductionsList { get; set; }
+        public List<Cocoon> CocoonList { get; set; }
+        public List<Note> NotesList { get; set; }
 
         public Spider(int spiderid, int userid, string genus, string species, char sex, string type, DateTime purchasedate, DateTime birthdate,
             DateTime deathdate, string websidelink, DateTime lastfeedingdate, string note, bool isactive, List<Molt> moltlist, List<Size> sizelist,
-            List<Terrarium> terrariumlist, List<Escape> escapelist)
+            List<Terrarium> terrariumlist, List<Escape> escapelist, List<Reproduction> reproductionslist, List<Cocoon> cocoonslist, List<Note> noteslist)
         {
             this.SpiderId = spiderid;
             this.UserId = userid;
@@ -48,6 +51,9 @@ namespace TerrApp.Models
             this.SizeList = sizelist;
             this.TerrariumList = terrariumlist;
             this.EscapeList = escapelist;
+            this.ReproductionsList = reproductionslist;
+            this.CocoonList = cocoonslist;
+            this.NotesList = noteslist;
         }
     }
 }

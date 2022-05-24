@@ -12,13 +12,15 @@ namespace TerrApp.Models.SpiderModels
         public int SpiderId { get; set; }
         public int SpiderSize { get; set; }
         public DateTime SizeDate { get; set; }
+        public string Note { get; set; }
 
-        public Size(int sizeid, int spiderid, int spidersize, DateTime sizedate)
+        public Size(int sizeid, int spiderid, int spidersize, DateTime sizedate, string note)
         {
             this.SizeId = sizeid;
             this.SpiderId = spiderid;
             this.SpiderSize = spidersize;
             this.SizeDate = sizedate;
+            this.Note = note;
         }
     }
 }
