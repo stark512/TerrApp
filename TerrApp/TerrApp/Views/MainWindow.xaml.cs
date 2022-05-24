@@ -13,14 +13,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TerrApp.Models;
 using TerrApp.User_Controls;
 
 namespace TerrApp.Views
 {
     public partial class MainWindow : Window
     {
+        public List<Spider> SpidersList { get; set; }
+        public string TempText { get; set; }
+
         public MainWindow()
         {
+            string TempText = "my test string";
+            SpidersList.Add(new Spider("Lasiodora", "Parahybana", "Female", "naziemny", true));
             InitializeComponent();
 
 #if DEBUG
