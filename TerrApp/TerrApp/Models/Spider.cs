@@ -55,5 +55,10 @@ namespace TerrApp.Models
             this.CocoonList = cocoonslist;
             this.NotesList = noteslist;
         }
+
+        public Spider()
+        {
+
+        }
     }
 }

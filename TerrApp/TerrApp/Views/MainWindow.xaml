@@ -32,7 +32,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1">
-            <StackPanel>
+            <StackPanel x:Name="spContent">
                 <ToggleButton Style="{StaticResource ToggleSwitch}" Margin="10"/>
             </StackPanel>
         </Grid>

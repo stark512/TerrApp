@@ -14,12 +14,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using TerrApp.Interfaces;
+using TerrApp.Services;
+using TerrApp.Models;
 
 namespace TerrApp.User_Controls
 {
     public partial class SpidersTab : UserControl
     {
-        private SqlConnection _Connection = new(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + Environment.CurrentDirectory + @"\UserData.mdf;Integrated Security = True");
+        private ISpider _ISpider;
 
         public SpidersTab()
         {
@@ -29,30 +32,11 @@ namespace TerrApp.User_Controls
 
         public void GetSpiderData()
         {
-            try
-            {
-                _Connection.Open();                
-                using (SqlCommand cmd = _Connection.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT * " +
-                        "FROM Spiders s, Molt m " +
-                        "WHERE s.Spider_Id = 1 AND m.Spider_Id = 1";
+            _ISpider = new SpiderService();
 
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dataTable = new DataTable();
-                        dataAdapter.Fill(dataTable);
-                        dgrdData.ItemsSource = dataTable.AsDataView();
-                    }
-                }
+            List<Spider> spidersList =  _ISpider.GetAllSpiders(0);
 
-                _Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                _Connection.Close();
-                MessageBox.Show(ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            dgrdData.DataContext = spidersList;
         }
     }
 }
