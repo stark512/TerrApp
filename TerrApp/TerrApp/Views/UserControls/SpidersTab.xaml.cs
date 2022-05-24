@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
-using TerrApp.Controlers;
 using System.Data.SqlClient;
 
 namespace TerrApp.User_Controls
