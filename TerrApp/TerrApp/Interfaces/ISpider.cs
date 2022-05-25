@@ -10,5 +10,7 @@ namespace TerrApp.Interfaces
     public interface ISpider
     {
         public List<Spider> GetAllSpiders(int userid);
+        public void SaveSpiderInDb(Spider spider, int userid);
+        public void DeleteSpider(int spiderid, int userid);
     }
 }

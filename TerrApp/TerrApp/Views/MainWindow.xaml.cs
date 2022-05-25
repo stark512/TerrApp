@@ -40,6 +40,7 @@ namespace TerrApp.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            spContent.Children.Clear();
             SpidersTab spiderTab = new();
             spContent.Children.Add(spiderTab);
         }

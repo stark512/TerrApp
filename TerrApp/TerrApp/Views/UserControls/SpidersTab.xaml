@@ -7,7 +7,37 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="grdMain" Background="WhiteSmoke">
-        <DataGrid x:Name="dgrdData"/>
+        <ListView>
+            <DataGrid x:Name="dgrdData" IsReadOnly="True">
+                <!--<DataGrid.Columns>
+                <DataGridTextColumn Header="ID pająka" Width="18*"/>
+                <DataGridTextColumn Header="ID Użytkownika" Width="28*"/>
+                <DataGridTextColumn Header="Gatunek" Width="30*"/>
+                <DataGridTextColumn Header="Rodzaj" Width="30*"/>
+                <DataGridTextColumn Header="Płeć" Width="10*"/>
+                <DataGridTextColumn Header="Typ" Width="30*"/>
+                <DataGridTextColumn Header="Data zakupu" Width="30*"/>
+                <DataGridTextColumn Header="Data urodzin" Width="30*"/>
+                <DataGridTextColumn Header="Data ostatniego karmienia" Width="30*"/>
+                <DataGridTextColumn Header="Aktywny" Width="18*"/>
+            </DataGrid.Columns>-->
+            </DataGrid>
+            <TextBox x:Name="tbxuserid" Text="userid (podaj 0)" Width="90"/>
+            <TextBox x:Name="tbxgenus" Text="genus" Width="80"/>
+            <TextBox x:Name="tbxspecies" Text="species" Width="80"/>
+            <TextBox x:Name="tbxsex" Text="sex (M/F)" Width="80"/>
+            <TextBox x:Name="tbxtype" Text="type" Width="80"/>
+            <TextBox x:Name="tbxpursache" Text="pursache date formatDaty(12.12.2020)" Width="220"/>
+            <TextBox x:Name="tbxbirth" Text="birth date" Width="80"/>
+            <TextBox x:Name="tbxdeath" Text="deathdate" Width="80"/>
+            <TextBox x:Name="tbxwebside" Text="webside link" Width="80"/>
+            <TextBox x:Name="tbxlastfeeding" Text="feeding date" Width="80"/>
+            <TextBox x:Name="tbxnote" Text="note" Width="80"/>
+            <TextBox x:Name="tbxisactive" Text="isactive (true, false)" Width="150"/>
+            <Button Content="Add Spider" Width="90" Height="50" HorizontalAlignment="Center" Click="Button_Click"/>
 
+            <TextBox x:Name="tbxdeletespiderid" Text="spider id" Margin="0,30,0,0" Grid.Column="1" Width="80"/>
+            <Button x:Name="btnDelete" Content="Delete Spider" Grid.Column="1" Width="90" Height="50" Click="Button_Click"/>
+        </ListView>
     </Grid>
 </UserControl>

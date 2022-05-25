@@ -17,6 +17,7 @@ using System.Data.SqlClient;
 using TerrApp.Interfaces;
 using TerrApp.Services;
 using TerrApp.Models;
+using TerrApp.Controlers;
 
 namespace TerrApp.User_Controls
 {
@@ -26,17 +27,57 @@ namespace TerrApp.User_Controls
 
         public SpidersTab()
         {
-            InitializeComponent();
+            InitializeComponent();            
             GetSpiderData();
         }
 
         public void GetSpiderData()
         {
             _ISpider = new SpiderService();
+            List<Spider> spidersList = _ISpider.GetAllSpiders(Globals.LocalUserData.Id);
 
-            List<Spider> spidersList =  _ISpider.GetAllSpiders(0);
+            string[] columnNames = { "ID pająka", "ID Użytkownika", "Gatunek", "Rodzaj", "Płeć", "Typ", "Data zakupu", "Data urodzin", "Data ostatniego karmienia", "Aktywny" };
+            using (DataTable dataTable = new())
+            {
+                for (int i = 0; i < columnNames.Length; i++)
+                {
+                    dataTable.Columns.Add(columnNames[i]);
+                }
 
-            dgrdData.DataContext = spidersList;
+                foreach (Spider spider in spidersList)
+                {
+                    dataTable.Rows.Add(spider.SpiderId, spider.UserId, spider.Genus, spider.Species, spider.Sex, spider.Type, spider.PurchaseDate, spider.BirthDate,
+                        spider.LastFeedingDate, spider.IsActive);
+                }
+                dgrdData.ItemsSource = dataTable.AsDataView();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button.Name == "btnDelete")
+            {                
+                _ISpider.DeleteSpider(int.Parse(tbxdeletespiderid.Text), Globals.LocalUserData.Id);
+            }
+            else
+            {
+                Spider spider = new();
+                spider.UserId = int.Parse(tbxuserid.Text);
+                spider.Genus = tbxgenus.Text;
+                spider.Species = tbxspecies.Text;
+                spider.Sex = char.Parse(tbxsex.Text);
+                spider.Type = tbxtype.Text;
+                spider.PurchaseDate = DateTime.ParseExact(tbxpursache.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.BirthDate = DateTime.ParseExact(tbxbirth.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.DeathDate = spider.BirthDate = DateTime.ParseExact(tbxdeath.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.WebsideLink = tbxwebside.Text;
+                spider.LastFeedingDate = DateTime.ParseExact(tbxlastfeeding.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.Note = tbxnote.Text;
+                spider.IsActive = bool.Parse(tbxisactive.Text);
+
+                _ISpider.SaveSpiderInDb(spider, spider.UserId);
+            }         
         }
     }
 }
