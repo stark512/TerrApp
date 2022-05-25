@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:TerrApp.Views.UserControls"
         xmlns:local="clr-namespace:TerrApp.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -35,6 +36,8 @@
         <Grid Grid.Column="1">
             <StackPanel x:Name="spContent">
                 <ToggleButton Style="{StaticResource ToggleSwitch}" Margin="10"/>
+                <uc:Table SourceData="{Binding SpidersList, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                <TextBlock Text="{Binding MainWindow.TempText, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Background="Yellow" Height="30" Width="160"/>
             </StackPanel>
         </Grid>
 
