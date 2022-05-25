@@ -14,45 +14,70 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using TerrApp.Interfaces;
+using TerrApp.Services;
+using TerrApp.Models;
+using TerrApp.Controlers;
 
 namespace TerrApp.User_Controls
 {
     public partial class SpidersTab : UserControl
     {
-        private SqlConnection _Connection = new(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + Environment.CurrentDirectory + @"\UserData.mdf;Integrated Security = True");
+        private ISpider _ISpider;
 
         public SpidersTab()
         {
-            InitializeComponent();
+            InitializeComponent();            
             GetSpiderData();
         }
 
         public void GetSpiderData()
         {
-            try
-            {
-                _Connection.Open();                
-                using (SqlCommand cmd = _Connection.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT * " +
-                        "FROM Spiders s, Molt m " +
-                        "WHERE s.Spider_Id = 1 AND m.Spider_Id = 1";
+            _ISpider = new SpiderService();
+            List<Spider> spidersList = _ISpider.GetAllSpiders(Globals.LocalUserData.Id);
 
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dataTable = new DataTable();
-                        dataAdapter.Fill(dataTable);
-                        dgrdData.ItemsSource = dataTable.AsDataView();
-                    }
+            string[] columnNames = { "ID pająka", "ID Użytkownika", "Gatunek", "Rodzaj", "Płeć", "Typ", "Data zakupu", "Data urodzin", "Data ostatniego karmienia", "Aktywny" };
+            using (DataTable dataTable = new())
+            {
+                for (int i = 0; i < columnNames.Length; i++)
+                {
+                    dataTable.Columns.Add(columnNames[i]);
                 }
 
-                _Connection.Close();
+                foreach (Spider spider in spidersList)
+                {
+                    dataTable.Rows.Add(spider.SpiderId, spider.UserId, spider.Genus, spider.Species, spider.Sex, spider.Type, spider.PurchaseDate, spider.BirthDate,
+                        spider.LastFeedingDate, spider.IsActive);
+                }
+                dgrdData.ItemsSource = dataTable.AsDataView();
             }
-            catch (Exception ex)
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button.Name == "btnDelete")
+            {                
+                _ISpider.DeleteSpider(int.Parse(tbxdeletespiderid.Text), Globals.LocalUserData.Id);
+            }
+            else
             {
-                _Connection.Close();
-                MessageBox.Show(ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+                Spider spider = new();
+                spider.UserId = int.Parse(tbxuserid.Text);
+                spider.Genus = tbxgenus.Text;
+                spider.Species = tbxspecies.Text;
+                spider.Sex = char.Parse(tbxsex.Text);
+                spider.Type = tbxtype.Text;
+                spider.PurchaseDate = DateTime.ParseExact(tbxpursache.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.BirthDate = DateTime.ParseExact(tbxbirth.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.DeathDate = spider.BirthDate = DateTime.ParseExact(tbxdeath.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.WebsideLink = tbxwebside.Text;
+                spider.LastFeedingDate = DateTime.ParseExact(tbxlastfeeding.Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                spider.Note = tbxnote.Text;
+                spider.IsActive = bool.Parse(tbxisactive.Text);
+
+                _ISpider.SaveSpiderInDb(spider, spider.UserId);
+            }         
         }
     }
 }

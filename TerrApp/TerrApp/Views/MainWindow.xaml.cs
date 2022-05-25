@@ -40,8 +40,9 @@ namespace TerrApp.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            spContent.Children.Clear();
             SpidersTab spiderTab = new();
-            grdMain.Children.Add(spiderTab);
+            spContent.Children.Add(spiderTab);
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)

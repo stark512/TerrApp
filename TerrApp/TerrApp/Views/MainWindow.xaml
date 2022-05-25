@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TerrApp.Views"
         mc:Ignorable="d"
-        Title="TerrApp" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="TerrApp" Height="700" Width="1400" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/ToggleSwitchStyle.xaml"/>
     </Window.Resources>
@@ -32,7 +33,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1">
-            <StackPanel>
+            <StackPanel x:Name="spContent">
                 <ToggleButton Style="{StaticResource ToggleSwitch}" Margin="10"/>
             </StackPanel>
         </Grid>
