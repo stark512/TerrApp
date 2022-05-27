@@ -26,7 +26,7 @@
                     <ResourceDictionary Source="Styles/SideMenuButtonStyle.xaml"/>
                 </StackPanel.Resources>
                 <ToggleButton Content="Main Menu" Checked="ToggleButton_Checked"/>
-                <ToggleButton Content="Spiders" Checked="ToggleButton_Checked"/>
+                <ToggleButton Content="Spiders" Checked="ToggleButton_Checked" Click="OpenSpidersTab"/>
                 <ToggleButton Content="Wylinki" Checked="ToggleButton_Checked"/>
                 <ToggleButton Content="Stats" Checked="ToggleButton_Checked"/>
                 <ToggleButton Content="Settings" Checked="ToggleButton_Checked"/>
@@ -35,8 +35,7 @@
         <Grid Grid.Column="1">
             <StackPanel>
                 <ToggleButton Style="{StaticResource ToggleSwitch}" Margin="10"/>
-                <uc:Table SourceData="{Binding SpidersList, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
-                <TextBlock Text="{Binding MainWindow.TempText, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Background="Yellow" Height="30" Width="160"/>
+
             </StackPanel>
         </Grid>
 

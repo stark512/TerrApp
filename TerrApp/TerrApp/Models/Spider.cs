@@ -13,7 +13,7 @@ namespace TerrApp.Models
         public int UserId { get; set; }
         public string Genus { get; set; }
         public string Species { get; set; }
-        public char Sex { get; set; }
+        public string Sex { get; set; }
         public string Type { get; set; }
         public DateTime PurchaseDate { get; set; }
         public DateTime BirthDate { get; set; }
@@ -30,9 +30,31 @@ namespace TerrApp.Models
         public List<Cocoon> CocoonList { get; set; }
         public List<Note> NotesList { get; set; }
 
-        public Spider(int spiderid, int userid, string genus, string species, char sex, string type, DateTime purchasedate, DateTime birthdate,
-            DateTime deathdate, string websidelink, DateTime lastfeedingdate, string note, bool isactive, List<Molt> moltlist, List<Size> sizelist,
-            List<Terrarium> terrariumlist, List<Escape> escapelist, List<Reproduction> reproductionslist, List<Cocoon> cocoonslist, List<Note> noteslist)
+        public Spider()
+        {
+
+        }
+
+        public Spider(int spiderid,
+                      int userid,
+                      string genus,
+                      string species,
+                      string sex,
+                      string type,
+                      DateTime purchasedate,
+                      DateTime birthdate,
+                      DateTime deathdate,
+                      string websidelink,
+                      DateTime lastfeedingdate,
+                      string note,
+                      bool isactive,
+                      List<Molt> moltlist,
+                      List<Size> sizelist,
+                      List<Terrarium> terrariumlist,
+                      List<Escape> escapelist,
+                      List<Reproduction> reproductionslist,
+                      List<Cocoon> cocoonslist,
+                      List<Note> noteslist)
         {
             this.SpiderId = spiderid;
             this.UserId = userid;

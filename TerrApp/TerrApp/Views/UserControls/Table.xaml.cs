@@ -25,19 +25,19 @@ namespace TerrApp.Views.UserControls
         {
             InitializeComponent();
 
-            Spider tempSpider = new();
-            int index = 0;
-            foreach (PropertyInfo property in tempSpider.GetType().GetProperties())
-            {
-                TableGrid.ColumnDefinitions.Add(new());
-                TextBlock textBlock = new TextBlock();
-                textBlock.Text = property.Name;
-                Grid.SetColumn(textBlock, index);
-                Grid.SetRow(textBlock, 0);
-                this.TableGrid.Children.Add(textBlock);
+            //Spider tempSpider = new();
+            //int index = 0;
+            //foreach (PropertyInfo property in tempSpider.GetType().GetProperties())
+            //{
+            //    TableGrid.ColumnDefinitions.Add(new());
+            //    TextBlock textBlock = new TextBlock();
+            //    textBlock.Text = property.Name;
+            //    Grid.SetColumn(textBlock, index);
+            //    Grid.SetRow(textBlock, 0);
+            //    this.TableGrid.Children.Add(textBlock);
 
-                index++;
-            }
+            //    index++;
+            //}
         }
     }
 }
