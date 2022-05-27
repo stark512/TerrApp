@@ -6,8 +6,21 @@
              xmlns:local="clr-namespace:TerrApp.User_Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="grdMain" Background="WhiteSmoke">
+    <StackPanel Background="WhiteSmoke">
         <DataGrid x:Name="dgrdData"/>
 
-    </Grid>
+        <DataGrid Name="SpidersTable" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Genus"  Binding="{Binding Genus}"/>
+                <DataGridTextColumn Header="Species" Binding="{Binding Species}" />
+                <DataGridTextColumn Header="Sex" Binding="{Binding Sex}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Purchase Date" Binding="{Binding PurchaseDate}" />
+                <DataGridTextColumn Header="BirthDate" Binding="{Binding BirthDate}" />
+                <DataGridTextColumn Header="DeathDate" Binding="{Binding DeathDate}" />
+                <DataGridTextColumn Header="Last Feeding Date" Binding="{Binding LastFeedingDate}" />
+                <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </UserControl>

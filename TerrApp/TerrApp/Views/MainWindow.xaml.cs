@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,34 +21,28 @@ namespace TerrApp.Views
 {
     public partial class MainWindow : Window
     {
-        public List<Spider> SpidersList { get; set; }
+        //public ObservableCollection<Spider> SpidersList { get; set; }
         public string TempText { get; set; }
 
         public MainWindow()
         {
-            string TempText = "my test string";
-            SpidersList.Add(new Spider("Lasiodora", "Parahybana", "Female", "naziemny", true));
             InitializeComponent();
-
-#if DEBUG
+            //SpidersTable.DataContext = SpidersList;
+        #if DEBUG
             DebugTest();
-#endif
+        #endif
         }
 
         public void DebugTest()
         {
-            Button button = new();
-            button.Height = 50;
-            button.Width = 70;
-            button.Content = "Test";
-            button.Click += Button_Click;
-            grdMain.Children.Add(button);            
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenSpidersTab(object sender, RoutedEventArgs e)
         {
-            SpidersTab spiderTab = new();
-            grdMain.Children.Add(spiderTab);
+            SpidersTab spidersTab = new();
+            Grid.SetColumn(spidersTab, 1);
+            grdMain.Children.Add(spidersTab);
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
