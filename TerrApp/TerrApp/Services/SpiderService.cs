@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TerrApp.Controlers;
 using TerrApp.Interfaces;
 using TerrApp.Models;
+using System.Collections.ObjectModel;
 
 namespace TerrApp.Services
 {
@@ -15,9 +16,9 @@ namespace TerrApp.Services
     {
         private SqlConnection _Connection = new(Globals.Connection.GetLocalConnectionString());
         
-        public List<Spider> GetAllSpiders(int userid)
+        public ObservableCollection<Spider> GetAllSpiders(int userid)
         {
-            List<Spider> spiders = new();
+            ObservableCollection<Spider> spiders = new();
             _Connection.Open();
             using (SqlCommand cmd = _Connection.CreateCommand())
             {

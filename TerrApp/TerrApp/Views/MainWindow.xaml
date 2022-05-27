@@ -26,18 +26,21 @@
                 <StackPanel.Resources>
                     <ResourceDictionary Source="Styles/SideMenuButtonStyle.xaml"/>
                 </StackPanel.Resources>
-                <ToggleButton Content="Main Menu" Checked="ToggleButton_Checked"/>
-                <ToggleButton Content="Spiders" Checked="ToggleButton_Checked" Click="OpenSpidersTab"/>
-                <ToggleButton Content="Wylinki" Checked="ToggleButton_Checked"/>
-                <ToggleButton Content="Stats" Checked="ToggleButton_Checked"/>
-                <ToggleButton Content="Settings" Checked="ToggleButton_Checked"/>
+                <ToggleButton x:Name="Add" Content="Add" Click="Add_Click" Style="{StaticResource AddButton}" />
+                <StackPanel x:Name="Add_InnerMenu"  Visibility="Collapsed" Background="#FF424041">
+                    <ToggleButton x:Name="AddSpider" Content="Spider" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
+                    <ToggleButton x:Name="AddMolt" Content="Molt" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
+                    <ToggleButton x:Name="AddCopulation" Content="Copulation" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
+                </StackPanel>
+                <ToggleButton x:Name="MainMenu" Content="Main Menu" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Spiders" Content="Spiders" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Molts" Content="Wylinki" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Copulations" Content="Kopulacje" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Stats" Content="Stats" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Settings" Content="Settings" Checked="SideMenuButton_Checked"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Column="1">
-            <StackPanel x:Name="spContent">
-                <ToggleButton Style="{StaticResource ToggleSwitch}" Margin="10"/>
-
-            </StackPanel>
+        <Grid x:Name="grdContent" Grid.Column="1">
         </Grid>
 
     </Grid>

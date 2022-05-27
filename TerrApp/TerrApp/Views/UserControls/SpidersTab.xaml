@@ -7,9 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Background="WhiteSmoke">
-        <DataGrid x:Name="dgrdData"/>
-
-        <DataGrid Name="SpidersTable" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+        <DataGrid Name="dgrdSpiders" ItemsSource="{Binding}" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Genus"  Binding="{Binding Genus}"/>
                 <DataGridTextColumn Header="Species" Binding="{Binding Species}" />

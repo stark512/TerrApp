@@ -13,7 +13,7 @@ namespace TerrApp.Models
         public int UserId { get; set; }
         public string Genus { get; set; }
         public string Species { get; set; }
-        public string Sex { get; set; }
+        public char Sex { get; set; }
         public string Type { get; set; }
         public DateTime? PurchaseDate { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -39,7 +39,7 @@ namespace TerrApp.Models
                       int userid,
                       string genus,
                       string species,
-                      string sex,
+                      char sex,
                       string type,
                       DateTime purchasedate,
                       DateTime birthdate,
@@ -76,11 +76,6 @@ namespace TerrApp.Models
             this.ReproductionsList = reproductionslist;
             this.CocoonList = cocoonslist;
             this.NotesList = noteslist;
-        }
-
-        public Spider()
-        {
-
         }
     }
 }

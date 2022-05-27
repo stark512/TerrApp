@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace TerrApp.Interfaces
 {
     public interface ISpider
     {
-        public List<Spider> GetAllSpiders(int userid);
+        public ObservableCollection<Spider> GetAllSpiders(int userid);
         public void SaveSpiderInDb(Spider spider, int userid);
         public void DeleteSpider(int spiderid, int userid);
     }
