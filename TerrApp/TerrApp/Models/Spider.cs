@@ -15,11 +15,11 @@ namespace TerrApp.Models
         public string Species { get; set; }
         public string Sex { get; set; }
         public string Type { get; set; }
-        public DateTime PurchaseDate { get; set; }
-        public DateTime BirthDate { get; set; }
-        public DateTime DeathDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public DateTime? DeathDate { get; set; }
         public string WebsideLink { get; set; }
-        public DateTime LastFeedingDate { get; set; }
+        public DateTime? LastFeedingDate { get; set; }
         public string Note { get; set; }
         public bool IsActive { get; set; }
         public List<Molt> MoltList { get; set; }
@@ -76,6 +76,11 @@ namespace TerrApp.Models
             this.ReproductionsList = reproductionslist;
             this.CocoonList = cocoonslist;
             this.NotesList = noteslist;
+        }
+
+        public Spider()
+        {
+
         }
     }
 }

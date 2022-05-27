@@ -22,5 +22,10 @@ namespace TerrApp.Models
             this.Theme = theme;
             this.SpidersList = spiderlist;
         }
+
+        public User()
+        {
+
+        }
     }
 }

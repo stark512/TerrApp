@@ -42,6 +42,7 @@ namespace TerrApp.Views
         {
             SpidersTab spidersTab = new();
             Grid.SetColumn(spidersTab, 1);
+            spContent.Children.Clear();
             grdMain.Children.Add(spidersTab);
         }
 
