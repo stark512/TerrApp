@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:TerrApp.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="TerrApp" Height="700" Width="1400" >
+        Title="TerrApp" Height="700" Width="1400">
     <Window.Resources>
         <ResourceDictionary Source="Styles/ToggleSwitchStyle.xaml"/>
     </Window.Resources>
@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Grid Background="#FF2A2729">
             <StackPanel
-                x:Name="SideMenu"
+                x:Name="spnlSideMenu"
                 Grid.Column="0"
                 VerticalAlignment="Center"
                 Background="#FF2A2729"
@@ -26,7 +26,7 @@
                 <StackPanel.Resources>
                     <ResourceDictionary Source="Styles/SideMenuButtonStyle.xaml"/>
                 </StackPanel.Resources>
-                <ToggleButton x:Name="Add" Content="Add" Click="Add_Click" Style="{StaticResource AddButton}" />
+                <ToggleButton x:Name="Add" Content="{Binding sideMenuTranslations.Add_Button}" Click="Add_Click" Style="{StaticResource AddButton}" />
                 <StackPanel x:Name="Add_InnerMenu"  Visibility="Collapsed" Background="#FF424041">
                     <ToggleButton x:Name="AddSpider" Content="Spider" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
                     <ToggleButton x:Name="AddMolt" Content="Molt" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Translations>
+  <XML_Globals>
+    <Spiders_Types>
+      <Arboreal Translate="Arboreal"/>
+      <Terrestrial Translate="Terrestrial"/>
+      <Subterranean Translate="Subterranean"/>
+      <Other Translate="Other"/>
+    </Spiders_Types>
+    <Spiders_Gender>
+      <Female Translate="Female"/>
+      <Male Translate="Male"/>
+    </Spiders_Gender>
+  </XML_Globals>
+  <grdMain>
+    <spnlSideMenu>
+      <Add_Button Translate="Add"/>
+      <AddSpider_Button Translate="Spider"/>
+      <AddMolt_Button Translate="Molt"/>
+      <AddCopulation_Button Translate="Copulation"/>
+      <MainMenu_Button Translate="Main Menu"/>
+      <Spiders_Button Translate="Spiders"/>
+      <Molts_Button Translate="Molts"/>
+      <Copulations_Button Translate="Copulations"/>
+      <Stats_Button Translate="Stats"/>
+      <Settings_Button Translate="Settings"/>
+    </spnlSideMenu>
+    <grdContent>
+      <Add_Tab>
+
+      </Add_Tab>
+      <AddSpider_Tab>
+        
+      </AddSpider_Tab>
+      <AddMolt_Tab>
+
+      </AddMolt_Tab>
+      <AddCopulation_Tab>
+
+      </AddCopulation_Tab>
+      <MainMenu_Tab>
+
+      </MainMenu_Tab>
+      <Spiders_Tab>
+        <SpiderTable>
+          <Genus_Column Translate="Genus"/>
+          <Species_Column Translate="Species"/>
+          <Sex_Column Translate="Sex"/>
+          <Type_Column Translate="Type"/>
+          <PurchaseDate_Column Translate="Purchase Date"/>
+          <BirthDate_Column Translate="Birth Date"/>
+          <DeathDate_Column Translate="Death Date"/>
+          <LastFeedingDate_Column Translate="Last Feeding Date"/>
+          <IsActive_Column Translate="Active"/>
+        </SpiderTable>
+      </Spiders_Tab>
+      <Molts_Tab>
+
+      </Molts_Tab>
+      <Copulations_Tab>
+
+      </Copulations_Tab>
+      <Stats_Tab>
+
+      </Stats_Tab>
+      <Settings_Tab>
+
+      </Settings_Tab>
+    </grdContent>
+  </grdMain>
+</Translations>

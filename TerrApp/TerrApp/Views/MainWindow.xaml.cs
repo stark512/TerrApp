@@ -14,26 +14,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TerrApp.Controlers;
 using TerrApp.Models;
+using TerrApp.Models.Translation_Config.grdMainModels;
 using TerrApp.User_Controls;
 
 namespace TerrApp.Views
 {
     public partial class MainWindow : Window
     {
-        public string TempText { get; set; }
+        public spnlSideMenu sideMenuTranslations { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-        #if DEBUG
-            DebugTest();
-        #endif
-        }
-
-        public void DebugTest()
-        {
-            
+            sideMenuTranslations = Globals.Translations.grdMain.spnlSideMenu;
+            this.DataContext = this;
         }
 
         private void CheckChosenToggleButton(ToggleButton chosenToggleButton, UIElementCollection uiElements)
@@ -63,7 +59,7 @@ namespace TerrApp.Views
         {
             ToggleButton sideMenuButton = (ToggleButton)sender;
 
-            CheckChosenToggleButton(sideMenuButton, SideMenu.Children);
+            CheckChosenToggleButton(sideMenuButton, spnlSideMenu.Children);
 
             grdContent.Children.Clear();
 
