@@ -1,0 +1,54 @@
+{
+    "Translation":
+    {
+      "ConfigGlobals":
+      {
+        "SpidersTypes":
+        {
+          "Arboreal": "Arboreal",
+          "Terrestrial": "Terrestrial",
+          "Subterranean": "Subterranean",
+          "Other": "Other"
+        },
+        "SpidersGender":
+        {
+          "Female": "Female",
+          "Male": "Male"
+        }
+      },
+      "grdMain":
+      {
+        "spnSideMenu":
+        {
+          "AddButton": "Add",
+          "AddSpiderButton": "Spider",
+          "AddMoltButton": "Molt",
+          "AddCopulationButton": "Copulation",
+          "MainMenuButton": "Home",
+          "SpidersButton": "Spiders",
+          "MoltsButton": "Molts",
+          "CopulationsButton": "Copulations",
+          "StatsButton": "Stats",
+          "SettingsButton": "Settings"
+        },
+        "grdContent":
+        {
+          "SpidersTab":
+          {
+            "SpiderTable":
+            {
+              "GenusColumn": "Genus",
+              "SpeciesColumn": "Species",
+              "SexColumn": "Sex",
+              "TypeColumn": "Type",
+              "PurchaseDateColumn": "Data Zakupu",
+              "BirthDateColumn": "Purchase Date",
+              "DeathDateColumn": "Death Date",
+              "LastFeedingDateColumn": "Last Feeding Date",
+              "IsActiveColumn": "Active"
+            }
+          }
+        }
+      }
+    }
+  }

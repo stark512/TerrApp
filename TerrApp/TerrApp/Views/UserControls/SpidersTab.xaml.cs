@@ -26,6 +26,17 @@ namespace TerrApp.User_Controls
     public partial class SpidersTab : UserControl
     {
         private ISpider _ISpider;
+        #region PropertiesForBinding
+        public string genusColumnText { get; set; }
+        public string speciesColumnText { get; set; }
+        public string sexColumnText { get; set; }
+        public string typeColumnText { get; set; }
+        public string purchaseDateColumnText { get; set; }
+        public string birthDateColumnText { get; set; }
+        public string deathDateColumnText { get; set; }
+        public string lastFeedingDateColumnText { get; set; }
+        public string activeColumnText { get; set; }
+        #endregion
 
         public SpidersTab()
         {
@@ -67,6 +78,28 @@ namespace TerrApp.User_Controls
 
             //    _ISpider.SaveSpiderInDb(spider, spider.UserId);
             //}
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BindingData();
+        }
+
+        /// <summary>
+        /// Bind side menu data
+        /// </summary>
+        private void BindingData()
+        {
+            //this.DataContext = this;
+            genusColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.GenusColumn;
+            speciesColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.SpeciesColumn;
+            sexColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.SexColumn;
+            typeColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.TypeColumn;
+            purchaseDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.PurchaseDateColumn;
+            birthDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.BirthDateColumn;
+            deathDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.DeathDateColumn;
+            lastFeedingDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.LastFeedingDateColumn;
+            activeColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.IsActiveColumn;
         }
     }
 }

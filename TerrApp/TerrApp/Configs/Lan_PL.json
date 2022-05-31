@@ -1,0 +1,54 @@
+{
+  "Translation":
+  {
+    "ConfigGlobals":
+    {
+      "SpidersTypes":
+      {
+        "Arboreal": "Nadrzewny",
+        "Terrestrial": "Naziemny",
+        "Subterranean": "Podziemny",
+        "Other": "Inny"
+      },
+      "SpidersGender":
+      {
+        "Female": "Samica",
+        "Male": "Samiec"
+      }
+    },
+    "grdMain":
+    {
+      "spnSideMenu":
+      {
+        "AddButton": "Dodaj",
+        "AddSpiderButton": "Pająk",
+        "AddMoltButton": "Wylinka",
+        "AddCopulationButton": "Kopulacja",
+        "MainMenuButton": "Strona Główna",
+        "SpidersButton": "Pająki",
+        "MoltsButton": "Wylinki",
+        "CopulationsButton": "Kopulacje",
+        "StatsButton": "Statystyki",
+        "SettingsButton": "Ustawienia"
+      },
+      "grdContent":
+      {
+        "SpidersTab":
+        {
+          "SpiderTable":
+          {
+            "GenusColumn": "Rodzaj",
+            "SpeciesColumn": "Gatunek",
+            "SexColumn": "Płeć",
+            "TypeColumn": "Typ",
+            "PurchaseDateColumn": "Data Zakupu",
+            "BirthDateColumn": "Data Urodzin",
+            "DeathDateColumn": "Data Śmierci",
+            "LastFeedingDateColumn": "Data Ostatniego Karmienia",
+            "IsActiveColumn": "Aktywny"
+          }
+        }
+      }
+    }
+  }
+}

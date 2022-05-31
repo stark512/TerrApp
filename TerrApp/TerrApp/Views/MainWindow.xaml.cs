@@ -16,20 +16,30 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TerrApp.Controlers;
 using TerrApp.Models;
-using TerrApp.Models.Translation_Config.grdMainModels;
+using TerrApp.Models.TranslateModels;
 using TerrApp.User_Controls;
+using SpidersTab = TerrApp.User_Controls.SpidersTab;
 
 namespace TerrApp.Views
 {
     public partial class MainWindow : Window
     {
-        public spnlSideMenu sideMenuTranslations { get; set; }
+        #region PropertiesForBinding
+        public string addBtnContent { get; set; }
+        public string addSpiderBtnContent { get; set; }
+        public string addMoltBtnContent { get; set; }
+        public string addCopulationBtnContent { get; set; }
+        public string mainMenuBtnContent { get; set; }
+        public string spidersBtnContent { get; set; }
+        public string moltsBtnContent { get; set; }
+        public string copulationsBtnContent { get; set; }
+        public string statsBtnContent { get; set; }
+        public string settingsBtnContent { get; set; }
+        #endregion
 
         public MainWindow()
         {
-            InitializeComponent();
-            sideMenuTranslations = Globals.Translations.grdMain.spnlSideMenu;
-            this.DataContext = this;
+            InitializeComponent();            
         }
 
         private void CheckChosenToggleButton(ToggleButton chosenToggleButton, UIElementCollection uiElements)
@@ -107,6 +117,29 @@ namespace TerrApp.Views
             {
                 Add_InnerMenu.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            BindingData();
+        }
+
+        /// <summary>
+        /// Bind side menu data
+        /// </summary>
+        private void BindingData()
+        {
+            this.DataContext = this;
+            addBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddButton;
+            addSpiderBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddSpiderButton;
+            addMoltBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddMoltButton;
+            addCopulationBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddCopulationButton;
+            mainMenuBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.MainMenuButton;
+            spidersBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.SpidersButton;
+            moltsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.MoltsButton;
+            copulationsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.CopulationsButton;
+            statsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.StatsButton;
+            settingsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.SettingsButton;
         }
     }
 }

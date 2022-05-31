@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:TerrApp.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="TerrApp" Height="700" Width="1400">
+        Title="TerrApp" Height="700" Width="1400" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/ToggleSwitchStyle.xaml"/>
     </Window.Resources>
@@ -26,18 +26,18 @@
                 <StackPanel.Resources>
                     <ResourceDictionary Source="Styles/SideMenuButtonStyle.xaml"/>
                 </StackPanel.Resources>
-                <ToggleButton x:Name="Add" Content="{Binding sideMenuTranslations.Add_Button}" Click="Add_Click" Style="{StaticResource AddButton}" />
+                <ToggleButton x:Name="Add" Content="{Binding addBtnContent}" Click="Add_Click" Style="{StaticResource AddButton}" />
                 <StackPanel x:Name="Add_InnerMenu"  Visibility="Collapsed" Background="#FF424041">
-                    <ToggleButton x:Name="AddSpider" Content="Spider" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
-                    <ToggleButton x:Name="AddMolt" Content="Molt" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
-                    <ToggleButton x:Name="AddCopulation" Content="Copulation" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
+                    <ToggleButton x:Name="AddSpider" Content="{Binding addSpiderBtnContent}" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
+                    <ToggleButton x:Name="AddMolt" Content="{Binding addMoltBtnContent}" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
+                    <ToggleButton x:Name="AddCopulation" Content="{Binding addCopulationBtnContent}" Checked="SideMenuButton_Checked" Style="{StaticResource InnerMenu}" />
                 </StackPanel>
-                <ToggleButton x:Name="MainMenu" Content="Main Menu" Checked="SideMenuButton_Checked"/>
-                <ToggleButton x:Name="Spiders" Content="Spiders" Checked="SideMenuButton_Checked"/>
-                <ToggleButton x:Name="Molts" Content="Wylinki" Checked="SideMenuButton_Checked"/>
-                <ToggleButton x:Name="Copulations" Content="Kopulacje" Checked="SideMenuButton_Checked"/>
-                <ToggleButton x:Name="Stats" Content="Stats" Checked="SideMenuButton_Checked"/>
-                <ToggleButton x:Name="Settings" Content="Settings" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="MainMenu" Content="{Binding mainMenuBtnContent}" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Spiders" Content="{Binding spidersBtnContent}" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Molts" Content="{Binding moltsBtnContent}" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Copulations" Content="{Binding copulationsBtnContent}" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Stats" Content="{Binding statsBtnContent}" Checked="SideMenuButton_Checked"/>
+                <ToggleButton x:Name="Settings" Content="{Binding settingsBtnContent}" Checked="SideMenuButton_Checked"/>
             </StackPanel>
         </Grid>
         <Grid x:Name="grdContent" Grid.Column="1">
