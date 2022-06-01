@@ -15,11 +15,11 @@ namespace TerrApp.Models
         public string Species { get; set; }
         public char Sex { get; set; }
         public string Type { get; set; }
-        public DateTime? PurchaseDate { get; set; }
-        public DateTime? BirthDate { get; set; }
-        public DateTime? DeathDate { get; set; }
+        public DateOnly? PurchaseDate { get; set; }
+        public DateOnly? BirthDate { get; set; }
+        public DateOnly? DeathDate { get; set; }
         public string WebsideLink { get; set; }
-        public DateTime? LastFeedingDate { get; set; }
+        public DateOnly? LastFeedingDate { get; set; }
         public string Note { get; set; }
         public bool IsActive { get; set; }
         public List<Molt> MoltList { get; set; }
@@ -41,11 +41,11 @@ namespace TerrApp.Models
                       string species,
                       char sex,
                       string type,
-                      DateTime purchasedate,
-                      DateTime birthdate,
-                      DateTime deathdate,
+                      DateOnly purchasedate,
+                      DateOnly birthdate,
+                      DateOnly deathdate,
                       string websidelink,
-                      DateTime lastfeedingdate,
+                      DateOnly lastfeedingdate,
                       string note,
                       bool isactive,
                       List<Molt> moltlist,

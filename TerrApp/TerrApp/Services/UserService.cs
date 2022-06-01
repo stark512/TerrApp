@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,21 +12,21 @@ namespace TerrApp.Services
 {
     public class UserService : IUser
     {
-        private SqlConnection _Connection = new(Globals.Connection.GetLocalConnectionString());
+        private SqliteConnection _Connection = new(Globals.Connection.GetLocalConnectionString());
 
         public User GetLocalUserData()
         {
             User user = new();
             _Connection.Open();
-            using (SqlCommand cmd = _Connection.CreateCommand())
+            using (SqliteCommand cmd = _Connection.CreateCommand())
             {
                 cmd.CommandText = "SELECT * FROM User_Data";
-                SqlDataReader reader = cmd.ExecuteReader();
+                SqliteDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     user.Id = int.Parse(reader["Id"].ToString());
                     user.Name = reader["Name"].ToString();
-                    user.Language = reader["Launguage"].ToString();
+                    user.Language = reader["Language"].ToString();
                     user.Theme = reader["Theme"].ToString();
                 }
                 else 

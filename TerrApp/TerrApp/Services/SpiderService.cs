@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,23 +8,24 @@ using TerrApp.Controlers;
 using TerrApp.Interfaces;
 using TerrApp.Models;
 using System.Collections.ObjectModel;
+using Microsoft.Data.Sqlite;
 
 namespace TerrApp.Services
 {
     public class SpiderService : ISpider
     {
-        private SqlConnection _Connection = new(Globals.Connection.GetLocalConnectionString());
+        private SqliteConnection _Connection = new(Globals.Connection.GetLocalConnectionString());
         
         public ObservableCollection<Spider> GetAllSpiders(int userid)
         {
             ObservableCollection<Spider> spiders = new();
             _Connection.Open();
-            using (SqlCommand cmd = _Connection.CreateCommand())
+            using (SqliteCommand cmd = _Connection.CreateCommand())
             {
                 cmd.Parameters.AddWithValue("@User_id", userid);
                 cmd.CommandText = "SELECT * FROM Spiders WHERE User_id = @User_id";
 
-                SqlDataReader reader = cmd.ExecuteReader();
+                SqliteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     Spider spider = new();
@@ -40,23 +40,23 @@ namespace TerrApp.Services
                     spider.Type = reader["Type"].ToString();
                     if (!String.IsNullOrEmpty(reader["Purchase_Date"].ToString()))
                     {
-                        spider.PurchaseDate = DateTime.ParseExact(reader["Purchase_Date"].ToString(), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        spider.PurchaseDate = DateOnly.ParseExact(reader["Purchase_Date"].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     }
                     if (!String.IsNullOrEmpty(reader["Birth_Date"].ToString()))
                     {
-                        spider.BirthDate = DateTime.ParseExact(reader["Birth_Date"].ToString(), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        spider.BirthDate = DateOnly.ParseExact(reader["Birth_Date"].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     }                    
                     if (!String.IsNullOrEmpty(reader["Death_Date"].ToString()))
                     {
-                        spider.DeathDate = DateTime.ParseExact(reader["Death_Date"].ToString(), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        spider.DeathDate = DateOnly.ParseExact(reader["Death_Date"].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     }
                     spider.WebsideLink = reader["Webside_Link"].ToString();
                     if (!String.IsNullOrEmpty(reader["Last_Feeding_Date"].ToString()))
                     {
-                        spider.LastFeedingDate = DateTime.ParseExact(reader["Last_Feeding_Date"].ToString(), "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        spider.LastFeedingDate = DateOnly.ParseExact(reader["Last_Feeding_Date"].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     }                    
                     spider.Note = reader["Note"].ToString();
-                    spider.IsActive = (bool)reader["Is_Active"];                   
+                    spider.IsActive = Convert.ToBoolean(reader["Is_Active"]);                   
 
                     spiders.Add(spider);
                 }
@@ -75,7 +75,7 @@ namespace TerrApp.Services
         {
             _Connection.Open();
 
-            using (SqlCommand cmd = _Connection.CreateCommand())
+            using (SqliteCommand cmd = _Connection.CreateCommand())
             {
                 cmd.Parameters.AddWithValue("@User_id", spider.UserId);
                 cmd.Parameters.AddWithValue("@Genus", spider.Genus);
@@ -103,7 +103,7 @@ namespace TerrApp.Services
         {
             _Connection.Open();
 
-            using (SqlCommand cmd = _Connection.CreateCommand())
+            using (SqliteCommand cmd = _Connection.CreateCommand())
             {
                 cmd.Parameters.AddWithValue("@Spider_Id", spiderid);
                 cmd.Parameters.AddWithValue("@User_id", userid);
