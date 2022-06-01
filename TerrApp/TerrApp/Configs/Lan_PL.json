@@ -1,6 +1,4 @@
 {
-  "Translation":
-  {
     "ConfigGlobals":
     {
       "SpidersTypes":
@@ -50,5 +48,4 @@
         }
       }
     }
-  }
 }

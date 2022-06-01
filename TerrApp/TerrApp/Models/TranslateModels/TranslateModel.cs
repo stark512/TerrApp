@@ -23,13 +23,15 @@ namespace TerrApp.Models.TranslateModels
         public GrdContent grdContent { get; set; }
     }
 
-    public class Root
+    public class Translation
     {
-        public Root()
+        public ConfigGlobals ConfigGlobals { get; set; }
+        public GrdMain grdMain { get; set; }
+
+        public Translation()
         {
 
         }
-        public Translation Translation { get; set; }
     }
 
     public class SpidersGender
@@ -76,11 +78,5 @@ namespace TerrApp.Models.TranslateModels
         public string CopulationsButton { get; set; }
         public string StatsButton { get; set; }
         public string SettingsButton { get; set; }
-    }
-
-    public class Translation
-    {
-        public ConfigGlobals ConfigGlobals { get; set; }
-        public GrdMain grdMain { get; set; }
     }
 }

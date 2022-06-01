@@ -18,35 +18,44 @@ namespace TerrApp.Controlers
         public static Connection Connection = new();
         private static IUser _IUser = new UserService();
         public static User LocalUserData = _IUser.GetLocalUserData();
-        public static Root TranslationCore = DeserializeJson();
+        public static Log Log = new Log();
+        public static Translation Translation = DeserializeJson();       
 
-        private static Root DeserializeJson()
+        private static Translation DeserializeJson()
         {
-            string jsonString = string.Empty;
-            //LocalUserData.Language = "ENG";
-            if (LocalUserData.Language == "PL")
+            try
             {
-                if (File.Exists(@"..\..\..\Configs\Lan_PL.json"))
+                string jsonString = string.Empty;
+                //LocalUserData.Language = "ENG";
+                if (LocalUserData.Language == "PL")
                 {
-                    jsonString = File.ReadAllText(@"..\..\..\Configs\Lan_PL.json");
+                    if (File.Exists(@"..\..\..\Configs\Lan_PL.json"))
+                    {
+                        jsonString = File.ReadAllText(@"..\..\..\Configs\Lan_PL.json");
+                    }
+                    else
+                    {
+                        throw new Exception("File not fund! : Translations PL");
+                    }
                 }
-                else
+                else if (LocalUserData.Language == "ENG")
                 {
-                    throw new Exception("File not fund! : Translations PL");
+                    if (File.Exists(@"..\..\..\Configs\Lan_ENG.json"))
+                    {
+                        jsonString = File.ReadAllText(@"..\..\..\Configs\Lan_ENG.json");
+                    }
+                    else
+                    {
+                        throw new Exception("File not fund! : Translations ENG");
+                    }
                 }
+                return JsonConvert.DeserializeObject<Translation>(jsonString);
             }
-            else if (LocalUserData.Language == "ENG")
+            catch(Exception ex)
             {
-                if (File.Exists(@"..\..\..\Configs\Lan_ENG.json"))
-                {
-                    jsonString = File.ReadAllText(@"..\..\..\Configs\Lan_ENG.json");
-                }
-                else
-                {
-                    throw new Exception("File not fund! : Translations ENG");
-                }                
+                Log.WriteLog("Globals" ,ex.Message, LogType.CriticalError, LocalUserData.Id);
+                throw;
             }
-            return JsonConvert.DeserializeObject<Root>(jsonString);
         }
 
     }

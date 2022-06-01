@@ -130,16 +130,16 @@ namespace TerrApp.Views
         private void BindingData()
         {
             this.DataContext = this;
-            addBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddButton;
-            addSpiderBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddSpiderButton;
-            addMoltBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddMoltButton;
-            addCopulationBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.AddCopulationButton;
-            mainMenuBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.MainMenuButton;
-            spidersBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.SpidersButton;
-            moltsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.MoltsButton;
-            copulationsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.CopulationsButton;
-            statsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.StatsButton;
-            settingsBtnContent = Globals.TranslationCore.Translation.grdMain.spnSideMenu.SettingsButton;
+            addBtnContent = Globals.Translation.grdMain.spnSideMenu.AddButton;
+            addSpiderBtnContent = Globals.Translation.grdMain.spnSideMenu.AddSpiderButton;
+            addMoltBtnContent = Globals.Translation.grdMain.spnSideMenu.AddMoltButton;
+            addCopulationBtnContent = Globals.Translation.grdMain.spnSideMenu.AddCopulationButton;
+            mainMenuBtnContent = Globals.Translation.grdMain.spnSideMenu.MainMenuButton;
+            spidersBtnContent = Globals.Translation.grdMain.spnSideMenu.SpidersButton;
+            moltsBtnContent = Globals.Translation.grdMain.spnSideMenu.MoltsButton;
+            copulationsBtnContent = Globals.Translation.grdMain.spnSideMenu.CopulationsButton;
+            statsBtnContent = Globals.Translation.grdMain.spnSideMenu.StatsButton;
+            settingsBtnContent = Globals.Translation.grdMain.spnSideMenu.SettingsButton;
         }
     }
 }
