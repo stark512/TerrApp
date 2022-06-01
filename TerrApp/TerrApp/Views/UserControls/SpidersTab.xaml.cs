@@ -47,10 +47,15 @@ namespace TerrApp.User_Controls
         public void GetSpiderData()
         {
             _ISpider = new SpiderService();
-            ObservableCollection<Spider> spidersList = _ISpider.GetAllSpiders(Globals.LocalUserData.Id);
-
-
-            dgrdSpiders.DataContext = spidersList;
+            try
+            {
+                ObservableCollection<Spider> spidersList = _ISpider.GetAllSpiders(Globals.LocalUserData.Id);
+                dgrdSpiders.DataContext = spidersList;
+            }
+            catch (Exception ex)
+            {
+                Globals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, Globals.LocalUserData.Id);
+            }            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) // add spider
@@ -91,15 +96,15 @@ namespace TerrApp.User_Controls
         private void BindingData()
         {
             //this.DataContext = this;
-            genusColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.GenusColumn;
-            speciesColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.SpeciesColumn;
-            sexColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.SexColumn;
-            typeColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.TypeColumn;
-            purchaseDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.PurchaseDateColumn;
-            birthDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.BirthDateColumn;
-            deathDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.DeathDateColumn;
-            lastFeedingDateColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.LastFeedingDateColumn;
-            activeColumnText = Globals.TranslationCore.Translation.grdMain.grdContent.SpidersTab.SpiderTable.IsActiveColumn;
+            genusColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.GenusColumn;
+            speciesColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.SpeciesColumn;
+            sexColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.SexColumn;
+            typeColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.TypeColumn;
+            purchaseDateColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.PurchaseDateColumn;
+            birthDateColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.BirthDateColumn;
+            deathDateColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.DeathDateColumn;
+            lastFeedingDateColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.LastFeedingDateColumn;
+            activeColumnText = Globals.Translation.grdMain.grdContent.SpidersTab.SpiderTable.IsActiveColumn;
         }
     }
 }
